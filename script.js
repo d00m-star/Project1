@@ -2,26 +2,43 @@ const startBtn = document.querySelector('#startBtn')
 const letterBtns = document.querySelectorAll('.letterBtns')
 const winOrLose = document.querySelector('#winLoseDisplay')
 const wrongGuess = document.querySelector('#incorrect')
+const fish = document.querySelector('#fish')
+const fishBar = document.querySelector('#mistakeFish')
+const shark = document.querySelector('#shark')
+const yourWordWas = document.querySelector('#yourWordWas')
 //Getters ^^
+//
 let wordStatus = null
-const wordBank = ['TERNARY', 'JAVASCRIPT', 'FUNCTION']
+const wordBank = [
+  'JAVASCRIPT',
+  'FUNCTIONS',
+  'VUE',
+  'HTML',
+  'CSS',
+  'PYTHON',
+  'DJANGO',
+  'SWITCH',
+  'CLASS',
+  'MONGO',
+  'VARIABLE',
+  'METHOD'
+]
 let displayed = ''
 let incorrect = 6
 let clickedLetters = []
-let round = 1
 //Variables ^^
-
+//
 letterBtns.forEach((button) => {
   button.disabled = true
 })
 //Start With Disabled Buttons ^^
-
+//
 const randomWord = () => {
   displayed = wordBank[Math.floor(Math.random() * wordBank.length)]
   console.log(displayed)
 }
 //Random Word Generator ^^
-
+//
 const displayHidden = () => {
   wordStatus = displayed
     .split('')
@@ -31,27 +48,29 @@ const displayHidden = () => {
   winOrLose.innerText = wordStatus
 }
 //Replaces "_" with the letter if it is there ^^
-
+//
 const checkWin = () => {
   if (wordStatus === displayed) {
     winOrLose.innerText = 'YOU WON!'
+    yourWordWas.innerText = displayed
     letterBtns.forEach((button) => {
       button.disabled = true
     })
   }
 }
 //Check if player won ^^
-
+//
 const checkLoss = () => {
   if (incorrect === 0) {
     winOrLose.innerText = 'YOU LOST!'
+    yourWordWas.innerText = displayed
     letterBtns.forEach((button) => {
       button.disabled = true
     })
   }
 }
 //Check if player lost ^^
-
+//
 const checkIncorrect = (letter) => {
   if (displayed.indexOf(letter) === -1) {
     incorrect -= 1
@@ -59,7 +78,7 @@ const checkIncorrect = (letter) => {
   }
 }
 //Check if letter is NOT in word ^^
-
+//
 letterBtns.forEach((button) => {
   button.onclick = () => {
     button.disabled = true
@@ -71,7 +90,7 @@ letterBtns.forEach((button) => {
   }
 })
 //On click of letter buttons, push value, disable button, run check functions ^^
-
+//
 startBtn.onclick = () => {
   letterBtns.forEach((button) => {
     button.disabled = false
