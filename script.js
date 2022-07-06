@@ -1,17 +1,26 @@
+// INDEXOF(): https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf
+
+//
 const startBtn = document.querySelector('#startBtn')
 const letterBtns = document.querySelectorAll('.letterBtns')
 const winOrLose = document.querySelector('#winLoseDisplay')
 const wrongGuess = document.querySelector('#incorrect')
-const fish = document.querySelector('#fish')
+const allFish = document.querySelectorAll('.fish')
+const fish1 = document.querySelector('#fish1')
+const fish2 = document.querySelector('#fish2')
+const fish3 = document.querySelector('#fish3')
+const fish4 = document.querySelector('#fish4')
+const fish5 = document.querySelector('#fish5')
 const fishBar = document.querySelector('#mistakeFish')
 const shark = document.querySelector('#shark')
 const yourWordWas = document.querySelector('#yourWordWas')
+const sharkBite = document.querySelector('#sharkBite')
 //Getters ^^
 //
 let wordStatus = null
 const wordBank = [
   'JAVASCRIPT',
-  'FUNCTIONS',
+  'FUNCTION',
   'VUE',
   'HTML',
   'CSS',
@@ -21,8 +30,14 @@ const wordBank = [
   'CLASS',
   'MONGO',
   'VARIABLE',
-  'METHOD'
+  'METHOD',
+  'ARRAY'
 ]
+fish1.innerText = '🐟'
+fish2.innerText = '🐟'
+fish3.innerText = '🐟'
+fish4.innerText = '🐟'
+fish5.innerText = '🐟'
 let displayed = ''
 let incorrect = 6
 let clickedLetters = []
@@ -64,6 +79,8 @@ const checkLoss = () => {
   if (incorrect === 0) {
     winOrLose.innerText = 'YOU LOST!'
     yourWordWas.innerText = displayed
+    winOrLose.style.backgroundColor = 'red'
+    fishBar.style.backgroundColor = 'red'
     letterBtns.forEach((button) => {
       button.disabled = true
     })
@@ -75,6 +92,17 @@ const checkIncorrect = (letter) => {
   if (displayed.indexOf(letter) === -1) {
     incorrect -= 1
     wrongGuess.innerText = incorrect
+  }
+  if (incorrect === 5) {
+    fish1.style.display = 'none'
+  } else if (incorrect === 4) {
+    fish2.style.display = 'none'
+  } else if (incorrect === 3) {
+    fish3.style.display = 'none'
+  } else if (incorrect === 2) {
+    fish4.style.display = 'none'
+  } else if (incorrect === 1) {
+    fish5.style.display = 'none'
   }
 }
 //Check if letter is NOT in word ^^
@@ -96,26 +124,18 @@ startBtn.onclick = () => {
     button.disabled = false
     displayed = ''
   })
+  winOrLose.style.backgroundColor = 'rgb(0, 132, 255)'
+  fishBar.style.backgroundColor = 'rgb(0, 132, 255)'
   startBtn.innerText = 'New Word'
   clickedLetters = []
+  yourWordWas.innerText = ''
+  fish1.style.display = 'inline'
+  fish2.style.display = 'inline'
+  fish3.style.display = 'inline'
+  fish4.style.display = 'inline'
+  fish5.style.display = 'inline'
   incorrect = 6
   wrongGuess.innerText = incorrect
   randomWord()
   displayHidden()
 }
-//Start button, Reset button ^^
-
-//
-
-//
-/*Re-theme hangman, as "Shark Eat Fish"
--store words in an array that will be randomly selected to play (math.floor(math.random))✅
--display word as dashes corresponding with the word length on the page, or be unveiled instead✅
--display each letter of alphabet to be clickable, when chosen, disable that letter✅
--display amount of guesses allowed, that counts down when its incorrect (store incorrect guesses in array that holds a max amount, if its maxed..you lose)✅
--make a start/restart button ✅
--as you guess incorrectly the smallest fish to biggest fish disappear, final image will be a shark coming at you with a restart button
--when you restart a new word to guess is selected✅
--when you guess a letter right, cycle through the word to find that letter and display all occurrences of that letter✅
--when you win, it automatically goes to a new word possibllyy? (just using restart button) ✅
-*/
