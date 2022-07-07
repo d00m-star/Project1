@@ -3,6 +3,12 @@
 //
 const startBtn = document.querySelector('#startBtn')
 const letterBtns = document.querySelectorAll('.letterBtns')
+const animalBtn = document.querySelector('#animalBtn')
+const acivityBtn = document.querySelector('#activityBtn')
+const codingBtn = document.querySelector('#codingBtn')
+const categoryBtns = document.querySelectorAll('.categoryBtns')
+const category = document.querySelector('#category')
+const categoryDisplay = document.querySelector('#categoryDisplay')
 const winOrLose = document.querySelector('#winLoseDisplay')
 const wrongGuess = document.querySelector('#incorrect')
 const allFish = document.querySelectorAll('.fish')
@@ -17,8 +23,13 @@ const yourWordWas = document.querySelector('#yourWordWas')
 const sharkBite = document.querySelector('#sharkBite')
 //Getters ^^
 //
+fish1.innerText = '🐟'
+fish2.innerText = '🐟'
+fish3.innerText = '🐟'
+fish4.innerText = '🐟'
+fish5.innerText = '🐟'
 let wordStatus = null
-const wordBank = [
+const wordBankEasy = [
   'JAVASCRIPT',
   'FUNCTION',
   'VUE',
@@ -31,13 +42,12 @@ const wordBank = [
   'MONGO',
   'VARIABLE',
   'METHOD',
-  'ARRAY'
+  'ARRAY',
+  'OPERATOR'
 ]
-fish1.innerText = '🐟'
-fish2.innerText = '🐟'
-fish3.innerText = '🐟'
-fish4.innerText = '🐟'
-fish5.innerText = '🐟'
+const wordBankMedium = ['JIMMYCRACKCORN', 'JEREMIAH', 'SHISHKABOB']
+const wordBankHard = ['ABRACADABRA', 'WHISTLEPIG', 'CORN']
+let difficulty = 0
 let displayed = ''
 let incorrect = 6
 let clickedLetters = []
@@ -46,11 +56,50 @@ let clickedLetters = []
 letterBtns.forEach((button) => {
   button.disabled = true
 })
+startBtn.disabled = true
+categoryBtns.disabled = true
+category.disabled = true
 //Start With Disabled Buttons ^^
 //
+animalBtn.onclick = () => {
+  categoryDisplay.innerText = 'Animal'
+  categoryBtns.forEach((button) => {
+    button.disabled = true
+  })
+  category.disabled = false
+  startBtn.disabled = false
+  difficulty = 1
+}
+activityBtn.onclick = () => {
+  categoryDisplay.innerText = 'Activity'
+  categoryBtns.forEach((button) => {
+    button.disabled = true
+  })
+  category.disabled = false
+  startBtn.disabled = false
+  difficulty = 2
+}
+codingBtn.onclick = () => {
+  categoryDisplay.innerText = 'Coding'
+  categoryBtns.forEach((button) => {
+    button.disabled = true
+  })
+  category.disabled = false
+  startBtn.disabled = false
+  difficulty = 3
+}
+//Difficulty Selection^^
+//
 const randomWord = () => {
-  displayed = wordBank[Math.floor(Math.random() * wordBank.length)]
-  console.log(displayed)
+  if (difficulty === 1) {
+    displayed = wordBankEasy[Math.floor(Math.random() * wordBankEasy.length)]
+    console.log(displayed)
+  } else if (difficulty === 2) {
+    displayed =
+      wordBankMedium[Math.floor(Math.random() * wordBankMedium.length)]
+  } else if (difficulty === 3) {
+    displayed = wordBankHard[Math.floor(Math.random() * wordBankHard.length)]
+  }
 }
 //Random Word Generator ^^
 //
@@ -68,6 +117,7 @@ const checkWin = () => {
   if (wordStatus === displayed) {
     winOrLose.innerText = 'YOU WON!'
     yourWordWas.innerText = displayed
+    shark.innerText = '💭'
     letterBtns.forEach((button) => {
       button.disabled = true
     })
@@ -122,8 +172,9 @@ letterBtns.forEach((button) => {
 startBtn.onclick = () => {
   letterBtns.forEach((button) => {
     button.disabled = false
-    displayed = ''
   })
+  displayed = ''
+  categoryBtns.disabled = false
   winOrLose.style.backgroundColor = 'rgb(0, 132, 255)'
   fishBar.style.backgroundColor = 'rgb(0, 132, 255)'
   startBtn.innerText = 'New Word'
@@ -135,7 +186,21 @@ startBtn.onclick = () => {
   fish4.style.display = 'inline'
   fish5.style.display = 'inline'
   incorrect = 6
+  shark.innerText = '🦈'
   wrongGuess.innerText = incorrect
   randomWord()
   displayHidden()
 }
+//Start/New Word/Reset ^^
+//
+category.onclick = () => {
+  categoryBtns.forEach((button) => {
+    button.disabled = false
+  })
+  letterBtns.forEach((button) => {
+    button.disabled = true
+  })
+  startBtn.disabled = true
+  startBtn.innerText = 'Begin!'
+}
+//Choose Category
