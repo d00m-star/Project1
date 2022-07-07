@@ -43,14 +43,24 @@ Simply guess the hidden word, by clicking on the letters provided.
 
 ## **_Screenshots_**
 
-COMING SOON!
+### **_Main Board_**
+
+![Image](./sharkeatfish1.png)
+
+### **_Win Condition_**
+
+![Image](./sharkeatfish2.png)
+
+### **_Lose Condition_**
+
+![Image](./sharkeatfish3.png)
 
 ---
 
 ## **_Future Updates_**
 
-- [x] Shark Theme
 - [x] Functional Game
+- [x] Shark Theme
 - [x] Choose a category!
 
 ---

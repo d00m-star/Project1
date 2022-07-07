@@ -29,7 +29,30 @@ fish3.innerText = '🐟'
 fish4.innerText = '🐟'
 fish5.innerText = '🐟'
 let wordStatus = null
-const wordBankEasy = [
+const wordBankAnimal = [
+  'DOG',
+  'CAT',
+  'HORSE',
+  'FISH',
+  'SNAKE',
+  'LIZARD',
+  'COW',
+  'BIRD',
+  'LLAMA',
+  'DEER'
+]
+const wordBankActivity = [
+  'BASKETBALL',
+  'EXERCISE',
+  'DRIVING',
+  'SLEEPING',
+  'COOKING',
+  'CODING',
+  'BASEBALL',
+  'GAMES',
+  'EATING'
+]
+const wordBankCoding = [
   'JAVASCRIPT',
   'FUNCTION',
   'VUE',
@@ -45,13 +68,11 @@ const wordBankEasy = [
   'ARRAY',
   'OPERATOR'
 ]
-const wordBankMedium = ['JIMMYCRACKCORN', 'JEREMIAH', 'SHISHKABOB']
-const wordBankHard = ['ABRACADABRA', 'WHISTLEPIG', 'CORN']
 let difficulty = 0
 let displayed = ''
 let incorrect = 6
 let clickedLetters = []
-//Variables ^^
+//Global variables and Arrays ^^
 //
 letterBtns.forEach((button) => {
   button.disabled = true
@@ -88,17 +109,19 @@ codingBtn.onclick = () => {
   startBtn.disabled = false
   difficulty = 3
 }
-//Difficulty Selection^^
+//Category Selection^^
 //
 const randomWord = () => {
   if (difficulty === 1) {
-    displayed = wordBankEasy[Math.floor(Math.random() * wordBankEasy.length)]
+    displayed =
+      wordBankAnimal[Math.floor(Math.random() * wordBankAnimal.length)]
     console.log(displayed)
   } else if (difficulty === 2) {
     displayed =
-      wordBankMedium[Math.floor(Math.random() * wordBankMedium.length)]
+      wordBankActivity[Math.floor(Math.random() * wordBankActivity.length)]
   } else if (difficulty === 3) {
-    displayed = wordBankHard[Math.floor(Math.random() * wordBankHard.length)]
+    displayed =
+      wordBankCoding[Math.floor(Math.random() * wordBankCoding.length)]
   }
 }
 //Random Word Generator ^^
@@ -203,4 +226,5 @@ category.onclick = () => {
   startBtn.disabled = true
   startBtn.innerText = 'Begin!'
 }
-//Choose Category
+//Choose Category^^
+//
