@@ -1,76 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./style.css">
   <script defer src="./script.js"></script>
-  <title>Shark Eat Fish!</title>
+  <title>Document</title>
 </head>
-
-<body>
-    <section id="gameBoard">
-    <section id="header">
-      <h1 id="gameTitle">🦈 Shark Eat Fish 🐟</h1>
-      <div id="winLoseDisplay"></div>
-      <div id="yourWordWas"></div>
-      <div id="guessCount"></div>
-    </section>
-    <div id="categoryDisplay"></div>
-    <section id="letterBoard">
-      <button class="letterBtns" value="A">A</button>
-      <button class="letterBtns" value="B">B</button>
-      <button class="letterBtns" value="C">C</button>
-      <button class="letterBtns" value="D">D</button>
-      <button class="letterBtns" value="E">E</button>
-      <button class="letterBtns" value="F">F</button>
-      <button class="letterBtns" value="G">G</button>
-      <button class="letterBtns" value="H">H</button>
-      <button class="letterBtns" value="I">I</button>
-      <button class="letterBtns" value="J">J</button>
-      <button class="letterBtns" value="K">K</button>
-      <button class="letterBtns" value="L">L</button>
-      <button class="letterBtns" value="M">M</button>
-      <button class="letterBtns" value="N">N</button>
-      <button class="letterBtns" value="O">O</button>
-      <button class="letterBtns" value="P">P</button>
-      <button class="letterBtns" value="Q">Q</button>
-      <button class="letterBtns" value="R">R</button>
-      <button class="letterBtns" value="S">S</button>
-      <button class="letterBtns" value="T">T</button>
-      <button class="letterBtns" value="U">U</button>
-      <button class="letterBtns" value="V">V</button>
-      <button class="letterBtns" value="W">W</button>
-      <button class="letterBtns" value="X">X</button>
-      <button class="letterBtns" value="Y">Y</button>
-      <button class="letterBtns" value="Z">Z</button>
-    </section>
-
-    <section>
-      <button id="startBtn">Start Game</button>
-      
-    </section>
-
-    <section id = "mistakeFish">
-      <h4 id = "guesses">Guesses left: <span id="incorrect"></span></h4> 
-      <div class = "fish" id = "fish1"></div>
-      <div class = "fish" id = "fish2"></div>
-      <div class = "fish" id = "fish3"></div>
-      <div class = "fish" id = "fish4"></div>
-      <div class = "fish" id = "fish5"></div>
-      <div id="shark">🦈</div>
-    </section>
-
-    <section id="categoryBar">
-      <button id="category">New Category</button>
-      <button class = "categoryBtns" id="animalBtn">Animal</button>
-      <button class = "categoryBtns" id="activityBtn">Activity</button>
-      <button class = "categoryBtns" id="codingBtn">Coding</button>
-    </section>
-    
-  </section> 
+<body id = "introBody">
+    <div id="introContainer">
+      <div id = 'titleContainer'>
+        <a href = 'main.html' id = 'introTitle'>🦈 Shark Eat Fish 🐟</a>
+        <ul id = 'getStarted'>
+          <li class = 'howToList' id ='howTo'>How to play:</li>
+          <li class = 'howToList'>🐟 Choose a category at the bottom</li>
+          <li class = 'howToList'>🐟 Press Start Game</li>
+          <li class = 'howToList'>🐟 Choose a letter to guess the word</li>
+          <li class = 'howToList'>🐟 Select New Category to change the topic</li>
+        </ul>
+      </div>
+    </div>
 </body>
-
 </html>
